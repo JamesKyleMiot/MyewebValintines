@@ -1,0 +1,400 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #fda085 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.floating-heart {
+    position: absolute;
+    font-size: 20px;
+    animation: floatUp 8s linear infinite;
+    opacity: 0;
+}
+
+@keyframes floatUp {
+    0% {
+        opacity: 0;
+        transform: translateY(100vh) rotate(0deg);
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100px) rotate(360deg);
+    }
+}
+
+.container {
+    position: relative;
+    z-index: 10;
+    max-width: 800px;
+    width: 100%;
+    animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.letter-card {
+    background: rgba(255, 255, 255, 0.95);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+    animation: scaleIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.5) rotate(-5deg);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+.envelope-top {
+    height: 80px;
+    background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+    clip-path: polygon(0 0, 50% 60%, 100% 0);
+    animation: envelopeOpen 2s ease-in-out;
+}
+
+@keyframes envelopeOpen {
+    0%, 50% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-20px);
+    }
+}
+
+.letter-content {
+    padding: 40px;
+    animation: slideDown 1.5s ease-out 0.5s both;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.title {
+    text-align: center;
+    color: #d63447;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.roses {
+    text-align: center;
+    font-size: 2.5em;
+    margin: 20px 0;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.message {
+    margin: 30px 0;
+    line-height: 1.8;
+    color: #333;
+}
+
+.greeting {
+    font-size: 1.4em;
+    color: #d63447;
+    font-style: italic;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.body-text {
+    font-size: 1.1em;
+    text-align: justify;
+    margin-bottom: 30px;
+    color: #444;
+}
+
+.signature {
+    font-size: 1.2em;
+    text-align: right;
+    font-style: italic;
+    color: #d63447;
+    margin-top: 30px;
+}
+
+.name {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #c9184a;
+}
+
+.hearts-decoration {
+    text-align: center;
+    font-size: 1.8em;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.heart {
+    display: inline-block;
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+.heart:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.heart:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.heart:nth-child(4) {
+    animation-delay: 0.6s;
+}
+
+.heart:nth-child(5) {
+    animation-delay: 0.8s;
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    25% {
+        transform: scale(1.3);
+    }
+    50% {
+        transform: scale(1);
+    }
+}
+
+.music-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 30px auto 0;
+    padding: 15px 35px;
+    background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(214, 52, 71, 0.4);
+    transition: all 0.3s ease;
+    font-family: 'Georgia', serif;
+}
+
+.music-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(214, 52, 71, 0.6);
+}
+
+.music-btn:active {
+    transform: translateY(-1px);
+}
+
+.music-icon {
+    font-size: 1.3em;
+    animation: rotate 2s linear infinite;
+}
+
+.music-btn.playing .music-icon {
+    animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+    
+    .letter-content {
+        padding: 30px 25px;
+    }
+    
+    .title {
+        font-size: 2em;
+    }
+    
+    .roses {
+        font-size: 2em;
+    }
+    
+    .greeting {
+        font-size: 1.2em;
+    }
+    
+    .body-text {
+        font-size: 1em;
+    }
+    
+    .signature {
+        font-size: 1em;
+    }
+    
+    .name {
+        font-size: 1.1em;
+    }
+    
+    .hearts-decoration {
+        font-size: 1.5em;
+        gap: 10px;
+    }
+    
+    .music-btn {
+        padding: 12px 25px;
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .letter-content {
+        padding: 25px 20px;
+    }
+    
+    .title {
+        font-size: 1.6em;
+    }
+    
+    .roses {
+        font-size: 1.8em;
+    }
+    
+    .greeting {
+        font-size: 1.1em;
+    }
+    
+    .body-text {
+        font-size: 0.95em;
+        text-align: left;
+    }
+    
+    .signature {
+        font-size: 0.95em;
+    }
+    
+    .hearts-decoration {
+        font-size: 1.3em;
+        gap: 8px;
+    }
+    
+    .envelope-top {
+        height: 60px;
+    }
+}
+
+@media (max-width: 360px) {
+    .letter-content {
+        padding: 20px 15px;
+    }
+    
+    .title {
+        font-size: 1.4em;
+    }
+    
+    .body-text {
+        font-size: 0.9em;
+    }
+}
+
+/* Print Styles */
+@media print {
+    body {
+        background: white;
+    }
+    
+    .hearts-container,
+    .music-btn {
+        display: none;
+    }
+    
+    .letter-card {
+        box-shadow: none;
+    }
+}
